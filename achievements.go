@@ -11,17 +11,17 @@ type Index struct {
 }
 
 func (api API) GetAchievementCategoryIndexes() {
-
+	// path := "/data/wow/achievement-category/"
 }
 
 func (api API) GetAchievementIndexes() {
-
+	// path := "/data/wow/achievement-category/%d"
 }
 
 func (api API) GetCategory(id uint32) {
-
+	// path := "/data/wow/achievement/index"
 }
 
 func (api API) GetAchievement(id uint32) {
-
+	// path := "/data/wow/achievement/%d"
 }

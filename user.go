@@ -1,9 +1,11 @@
 package blizzard
 
+// UserCharacters is the response to /wow/user/characters listing your characters
 type UserCharacters struct {
 	Characters []Character `json:"characters"`
 }
 
+// Character is a struct base for each character that you own
 type Character struct {
 	Name              string        `json:"name"`
 	Realm             string        `json:"realm"`
@@ -18,6 +20,7 @@ type Character struct {
 	LastModified      uint64        `json:"lastModified"`
 }
 
+// CharacterSpec is the information about that character's currently select spec
 type CharacterSpec struct {
 	Name            string `json:"name"`
 	Role            string `json:"role"`
@@ -27,6 +30,19 @@ type CharacterSpec struct {
 	Order           uint32 `json:"order"`
 }
 
-func (api API) GetUserCharacters(token AccessToken) {
+// GetUserCharacters returns a list of all characters on the token's account
+func (api API) GetUserCharacters(token AccessToken) (*UserCharacters, error) {
+	request, err := api.newGet("/wow/user/characters")
+	if err != nil {
+		return nil, err
+	}
 
+	request.Header.Set("Authorization", "Bearer "+token.AccessToken)
+	var characters *UserCharacters
+	err = api.do(request, err)
+	if err != nil {
+		return nil, err
+	}
+
+	return characters, nil
 }

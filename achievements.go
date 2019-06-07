@@ -10,18 +10,30 @@ type Index struct {
 	name string
 }
 
-func (api API) GetAchievementCategoryIndexes() {
-	// path := "/data/wow/achievement-category/"
-}
+// func (api API) GetAchievementCategoryIndexes() {
+// 	request, err := api.newGet("/data/wow/achievement-category")
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// }
 
-func (api API) GetAchievementIndexes() {
-	// path := "/data/wow/achievement-category/%d"
-}
+// func (api API) GetAchievementIndexes(categoryID uint32) {
+// 	request, err := api.newGet(fmt.Sprintf("/data/wow/achievement-category/%d", categoryID))
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// }
 
-func (api API) GetCategory(id uint32) {
-	// path := "/data/wow/achievement/index"
-}
+// func (api API) GetCategory() {
+// 	request, err := api.newGet("/data/wow/achievement/index")
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// }
 
-func (api API) GetAchievement(id uint32) {
-	// path := "/data/wow/achievement/%d"
-}
+// func (api API) GetAchievement(achievementID uint32) {
+// 	request, err := api.newGet(fmt.Sprintf("/data/wow/achievement/%d", achievementID))
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// }

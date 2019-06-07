@@ -4,11 +4,24 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
 )
+
+type LocaleTypes int
+
+const (
+	EN_US LocaleTypes = iota
+)
+
+func (locale LocaleTypes) String() string {
+	return [...]string{
+		"en_US",
+	}[locale]
+}
 
 // API is an instance of a client to interact with the blizzard api
 type API struct {
@@ -21,11 +34,13 @@ type API struct {
 	rendersURI   string
 	clientSecret string
 	redirectURI  string
+	locale       LocaleTypes
 }
 
 // Options is the configuration object used to build the blizzard api client
 type Options struct {
 	Region       string
+	Locale       LocaleTypes
 	ClientID     string
 	ClientSecret string
 	RedirectURI  string
@@ -38,6 +53,7 @@ func NewClient(options *Options) *API {
 		clientID:     options.ClientID,
 		clientSecret: options.ClientSecret,
 		redirectURI:  options.RedirectURI,
+		locale:       options.Locale,
 		client:       &http.Client{Timeout: time.Second * 10},
 		authURI:      fmt.Sprintf("https://%s.battle.net", options.Region),
 		baseURI:      fmt.Sprintf("https://%s.api.blizzard.com", options.Region),
@@ -55,6 +71,18 @@ func (api API) setClientToken() {
 	}
 
 	api.clientAuth = clientToken
+}
+
+func (api API) newGet(path string) (*http.Request, error) {
+	return http.NewRequest("GET", api.baseURI+path, nil)
+}
+
+func (api API) newPost(path string, body io.Reader) (*http.Request, error) {
+	return http.NewRequest("POST", api.baseURI+path, body)
+}
+
+func (api API) setLocale(locale LocaleTypes) {
+	api.locale = locale
 }
 
 func (api API) do(request *http.Request, out interface{}) error {

@@ -79,7 +79,12 @@ func (api API) GetUserInfo(token AccessToken) (*UserInfo, error) {
 	}
 
 	var info *UserInfo
-	return info, api.do(request, &info)
+	err = api.do(request, &info)
+	if err != nil {
+		return nil, err
+	}
+
+	return info, nil
 }
 
 // GetUserAuthorizationURI get the redirect url used to get the user to SSO into their account

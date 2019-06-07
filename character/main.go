@@ -55,97 +55,24 @@ type EquippedItems struct {
 	AverageItemLevel         uint16 `json:"averageItemLevel"`
 	AverageItemLevelEquipped uint32 `json:"averageItemLevelEquipped"`
 
-	Head     *Item `json:"head,omitempty"`
-	Neck     *Item `json:"neck,omitempty"`
-	Shoulder *Item `json:"shoulder,omitempty"`
-	Back     *Item `json:"back,omitempty"`
-	Chest    *Item `json:"chest,omitempty"`
-	Wrist    *Item `json:"wrist,omitempty"`
-	Hands    *Item `json:"hands,omitempty"`
-	Waist    *Item `json:"waist,omitempty"`
-	Legs     *Item `json:"legs,omitempty"`
-	Feet     *Item `json:"feet,omitempty"`
-	Finger1  *Item `json:"finger1,omitempty"`
-	Finger2  *Item `json:"finder2,omitempty"`
-	Trinket1 *Item `json:"trinket1,omitempty"`
-	Trinket2 *Item `json:"trinket2,omitemtpy"`
-	MainHand *Item `json:"mainHand,omitempty"`
+	Head     *EquippedItem `json:"head,omitempty"`
+	Neck     *EquippedItem `json:"neck,omitempty"`
+	Shoulder *EquippedItem `json:"shoulder,omitempty"`
+	Back     *EquippedItem `json:"back,omitempty"`
+	Chest    *EquippedItem `json:"chest,omitempty"`
+	Wrist    *EquippedItem `json:"wrist,omitempty"`
+	Hands    *EquippedItem `json:"hands,omitempty"`
+	Waist    *EquippedItem `json:"waist,omitempty"`
+	Legs     *EquippedItem `json:"legs,omitempty"`
+	Feet     *EquippedItem `json:"feet,omitempty"`
+	Finger1  *EquippedItem `json:"finger1,omitempty"`
+	Finger2  *EquippedItem `json:"finder2,omitempty"`
+	Trinket1 *EquippedItem `json:"trinket1,omitempty"`
+	Trinket2 *EquippedItem `json:"trinket2,omitemtpy"`
+	MainHand *EquippedItem `json:"mainHand,omitempty"`
 }
 
-type Item struct {
-
-	// "mainHand": {
-	//     "id": 163872,
-	//     "name": "Honorbound War Staff",
-	//     "icon": "inv_staff_2h_warfrontshorde_c_01",
-	//     "quality": 4,
-	//     "itemLevel": 370,
-	//     "tooltipParams": {
-	//         "timewalkerLevel": 120,
-	//         "azeritePower0": 0,
-	//         "azeritePower1": 0,
-	//         "azeritePower2": 0,
-	//         "azeritePower3": 0,
-	//         "azeritePowerLevel": 0,
-	//         "azeritePower4": 0
-	//     },
-	//     "stats": [
-	//         {
-	//             "stat": 40,
-	//             "amount": 90
-	//         },
-	//         {
-	//             "stat": 36,
-	//             "amount": 140
-	//         },
-	//         {
-	//             "stat": 5,
-	//             "amount": 286
-	//         },
-	//         {
-	//             "stat": 62,
-	//             "amount": 99
-	//         },
-	//         {
-	//             "stat": 7,
-	//             "amount": 473
-	//         }
-	//     ],
-	//     "armor": 0,
-	//     "weaponInfo": {
-	//         "damage": {
-	//             "min": 329,
-	//             "max": 445,
-	//             "exactMin": 329,
-	//             "exactMax": 445
-	//         },
-	//         "weaponSpeed": 3.6,
-	//         "dps": 107.5
-	//     },
-	//     "context": "raid-mythic",
-	//     "bonusLists": [
-	//         5126,
-	//         41,
-	//         1562,
-	//         4786
-	//     ],
-	//     "artifactId": 0,
-	//     "displayInfoId": 168844,
-	//     "artifactAppearanceId": 0,
-	//     "artifactTraits": [],
-	//     "relics": [],
-	//     "appearance": {
-	//         "itemAppearanceModId": 0
-	//     },
-	//     "azeriteItem": {
-	//         "azeriteLevel": 0,
-	//         "azeriteExperience": 0,
-	//         "azeriteExperienceRemaining": 0
-	//     },
-	//     "azeriteEmpoweredItem": {
-	//         "azeritePowers": []
-	//     }
-	// }
+type EquippedItem struct {
 }
 
 type Stat struct {
@@ -173,5 +100,17 @@ type Character struct {
 	Guild               *Guild              `json:"guild,omitempty"`
 	HunterPets          *HunterPets         `json:"hunterPets,omitempty"`
 	EquippedItems       *EquippedItems      `json:"items,omitempty"`
+	Mounts              *interface{}        `json:"mounts,omitempty"`
+	Pets                *interface{}        `json:"pets,omitempty"`
+	PetSlots            *interface{}        `json:"petSlots,omitempty"`
+	Professions         *interface{}        `json:"professions,omitempty"`
+	Progression         *interface{}        `json:"progression,omitempty"`
+	PVP                 *interface{}        `json:"pvp,omitempty"`
 	Quests              []uint32            `json:"quests,omitempty"`
+	Reputation          *interface{}        `json:"reputation,omitempty"`
+	Statistics          *interface{}        `json:"statistics,omitempty"`
+	Stats               *interface{}        `json:"stats,omitempty"`
+	Talents             *interface{}        `json:"talents,omitempty"`
+	Titles              *interface{}        `json:"titles,omitempty"`
+	Audit               *interface{}        `json:"audit,omitempty"`
 }
